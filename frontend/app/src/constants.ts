@@ -97,7 +97,7 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
   Exclude<v.InferOutput<ReturnType<typeof vEnvLegacyCheck>>, boolean>
 >([
   // mainnet
-  [1, {
+  [11690, {
     BOLD_TOKEN: "0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98",
     COLLATERAL_REGISTRY: "0xd99de73b95236f69a559117ecd6f519af780f3f7",
     GOVERNANCE: "0x636deb767cd7d0f15ca4ab8ea9a9b26e98b426ac",
@@ -113,7 +113,7 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
     }, {
       symbol: "WCENT",
       name: "WCENT",
-      COLL_TOKEN: "0xB28EA8D01231262C0989513575D95d6848C1DC55",
+      COLL_TOKEN: "0x9ac7E5523Be1c01DAD9AEDa00A845551e58c890f",
       LEVERAGE_ZAPPER: "0xc3d864adc2a9b49d52e640b697241408d896179f",
       STABILITY_POOL: "0xcf46dab575c364a8b91bda147720ff4361f4627f",
       TROVE_MANAGER: "0xb47ef60132deabc89580fd40e49c062d93070046",

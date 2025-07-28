@@ -66,6 +66,8 @@ export function useBalances(
     },
   });
   console.log("erc20Balances", erc20Balances.data);
+  console.log("erc20Tokens", erc20Tokens);
+  console.log("ethTokens", ethTokens);
 
   const ethBalance = useWagmiBalance({
     address,
@@ -73,7 +75,7 @@ export function useBalances(
       enabled: Boolean(address && ethTokens.length > 0),
     },
   });
-  console.log(ethBalance);
+  console.log("ethBalance", ethBalance.data);
   // combine results
   return tokens.reduce((result, token) => {
     if (token === "ETH") {
