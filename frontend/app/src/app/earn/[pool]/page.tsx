@@ -2,7 +2,7 @@ export function generateStaticParams() {
   return [
     { pool: "eth" },
     { pool: "reth" },
-    { pool: "wsteth" },
+    { pool: "wcent" },
     { pool: "sbold" },
   ];
 }

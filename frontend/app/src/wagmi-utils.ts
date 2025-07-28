@@ -2,7 +2,7 @@ import type { Dnum, Token } from "@/src/types";
 import type { Address } from "@liquity2/uikit";
 
 import { dnum18 } from "@/src/dnum-utils";
-import { CONTRACT_BOLD_TOKEN, CONTRACT_LQTY_TOKEN, CONTRACT_LUSD_TOKEN } from "@/src/env";
+import { CONTRACT_BOLD_TOKEN, CONTRACT_LQTY_TOKEN, CONTRACT_LUSD_TOKEN, CONTRACT_WCENT_TOKEN } from "@/src/env";
 import { getBranch } from "@/src/liquity-utils";
 import { getSafeStatus } from "@/src/safe-utils";
 import { isCollateralSymbol } from "@liquity2/uikit";
@@ -41,6 +41,7 @@ export function useBalances(
       .with("LUSD", () => CONTRACT_LUSD_TOKEN)
       .with("BOLD", () => CONTRACT_BOLD_TOKEN)
       .with("LQTY", () => CONTRACT_LQTY_TOKEN)
+      .with("WCENT", () => CONTRACT_WCENT_TOKEN)
       .otherwise(() => null);
 
     return {
@@ -64,6 +65,7 @@ export function useBalances(
       enabled: Boolean(address && erc20Tokens.length > 0),
     },
   });
+  console.log("erc20Balances", erc20Balances.data);
 
   const ethBalance = useWagmiBalance({
     address,
@@ -71,7 +73,7 @@ export function useBalances(
       enabled: Boolean(address && ethTokens.length > 0),
     },
   });
-
+  console.log(ethBalance);
   // combine results
   return tokens.reduce((result, token) => {
     if (token === "ETH") {

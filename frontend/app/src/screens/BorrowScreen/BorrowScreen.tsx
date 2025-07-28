@@ -64,7 +64,7 @@ export function BorrowScreen() {
   const branch = getBranch(collSymbol);
   const collateral = getCollToken(branch.id);
   const collaterals = branches.map((b) => getCollToken(b.branchId));
-
+  console.log(collaterals);
   const maxCollDeposit = MAX_COLLATERAL_DEPOSITS[collSymbol];
 
   const deposit = useInputFieldValue(fmtnum, {
@@ -87,7 +87,7 @@ export function BorrowScreen() {
 
   const balances = useBalances(account.address, KNOWN_COLLATERAL_SYMBOLS);
   const collateralRatios = useBranchCollateralRatios(branch.id);
-
+  console.log(account.address);
   const collBalance = balances[collateral.symbol];
   if (!collBalance) {
     throw new Error(`Unknown collateral symbol: ${collateral.symbol}`);

@@ -65,24 +65,23 @@ export function Tooltip({
     visible,
   });
 
-  const { refs: floatingRefs, floatingStyles } = useFloating({
-    placement: `bottom-${placement}`,
-    open: visible,
-    whileElementsMounted: (referenceEl, floatingEl, update) => (
-      autoUpdate(referenceEl, floatingEl, update, {
-        layoutShift: false,
-        animationFrame: false,
-      })
-    ),
-    middleware: [
-      offset(8),
-      shift({
-        crossAxis: true,
-        padding: 8,
-      }),
-    ],
-    transform: false,
-  });
+const { refs: floatingRefs, x, y, strategy } = useFloating<HTMLElement>({
+  placement: `bottom-${placement}`,
+  open: visible,
+  whileElementsMounted: (referenceEl, floatingEl, update) => (
+    autoUpdate(referenceEl, floatingEl, update, {
+      layoutShift: false,
+      animationFrame: false,
+    })
+  ),
+  middleware: [
+    offset(8),
+    shift({
+      crossAxis: true,
+      padding: 8,
+    }),
+  ],
+});
 
   const transition = useTransition(visible, {
     from: {
@@ -114,7 +113,7 @@ export function Tooltip({
         },
         setReference: floatingRefs.setReference,
       })}
-      <Root>
+            <Root>
         {transition((transitionStyles, visible) => (
           visible && (
             <a.div
@@ -131,7 +130,9 @@ export function Tooltip({
               })}
               style={{
                 ...transitionStyles,
-                ...floatingStyles,
+                position: strategy,
+                top: y ?? 0,
+                left: x ?? 0,
               }}
             >
               <TooltipPopup

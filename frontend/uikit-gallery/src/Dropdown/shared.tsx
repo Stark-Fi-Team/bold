@@ -12,7 +12,7 @@ function tokenItemRow(
   balance: string,
 ) {
   return {
-    icon: <TokenIcon symbol={symbol} />,
+    icon: symbol ? <TokenIcon symbol={symbol} /> : <PlaceholderIcon />,
     label: name,
     value: balance,
   };
@@ -87,7 +87,7 @@ export function DropdownFixture({
           : [
             tokenItemRow("ETH", "ETH", "10.00"),
             tokenItemRow("RETH", "rETH", "30.00"),
-            tokenItemRow("WSTETH", "wstETH", "40.00"),
+            tokenItemRow("WCENT", "wCENT", "40.00"),
           ]}
         menuWidth={300}
         onSelect={setSelected}

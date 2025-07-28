@@ -61,7 +61,7 @@ export const MIN_DEBT = dn.from(2000, 18);
 
 export const MAX_COLLATERAL_DEPOSITS: Record<CollateralSymbol, dn.Dnum> = {
   ETH: dn.from(100_000_000n, 18),
-  WSTETH: dn.from(100_000_000n, 18),
+  WCENT: dn.from(100_000_000n, 18),
   RETH: dn.from(100_000_000n, 18),
 };
 
@@ -111,9 +111,9 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
       STABILITY_POOL: "0xf69eb8c0d95d4094c16686769460f678727393cf",
       TROVE_MANAGER: "0x81d78814df42da2cab0e8870c477bc3ed861de66",
     }, {
-      symbol: "WSTETH",
-      name: "wstETH",
-      COLL_TOKEN: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      symbol: "WCENT",
+      name: "WCENT",
+      COLL_TOKEN: "0xB28EA8D01231262C0989513575D95d6848C1DC55",
       LEVERAGE_ZAPPER: "0xc3d864adc2a9b49d52e640b697241408d896179f",
       STABILITY_POOL: "0xcf46dab575c364a8b91bda147720ff4361f4627f",
       TROVE_MANAGER: "0xb47ef60132deabc89580fd40e49c062d93070046",
@@ -141,8 +141,8 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
       STABILITY_POOL: "0x89fb98c98792c8b9e9d468148c6593fa0fc47b40",
       TROVE_MANAGER: "0x364038750236739e0cd96d5754516c9b8168fb0c",
     }, {
-      symbol: "WSTETH",
-      name: "wstETH",
+      symbol: "WCENT",
+      name: "WCENT",
       COLL_TOKEN: "0xff9f477b09c6937ff6313ae90e79022609851a9c",
       LEVERAGE_ZAPPER: "0xea7fb1919bf9bae007df10ad8b748ee75fd5971d",
       STABILITY_POOL: "0x68320bd4bbc16fe14f91501380edaa9ffe5890e1",
@@ -170,7 +170,7 @@ export const DEFAULT_STRATEGIES: Array<[
       name: "Conservative Strategy",
       address: "0xE507E4d0763851A6287238aadD243948D18AB60a",
     }]],
-    // WSTETH
+    // WCENT
     [1, [{
       name: "Conservative Strategy",
       address: "0x8869a6FB59a8Df330F90D9Fbf46eBfaFf6D4BC14",

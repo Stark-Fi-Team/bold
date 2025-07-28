@@ -27,14 +27,14 @@ export type TokenSymbol =
   | "LUSD"
   | "RETH"
   | "SBOLD"
-  | "WSTETH";
+  | "WCENT";
 
 export type CollateralSymbol =
   & TokenSymbol
   & (
     | "ETH"
     | "RETH"
-    | "WSTETH"
+    | "WCENT"
   );
 
 export function isTokenSymbol(symbolOrUrl: string): symbolOrUrl is TokenSymbol {
@@ -45,7 +45,7 @@ export function isTokenSymbol(symbolOrUrl: string): symbolOrUrl is TokenSymbol {
     || symbolOrUrl === "LUSD"
     || symbolOrUrl === "RETH"
     || symbolOrUrl === "SBOLD"
-    || symbolOrUrl === "WSTETH"
+    || symbolOrUrl === "WCENT"
   );
 }
 
@@ -53,7 +53,7 @@ export function isCollateralSymbol(symbol: string): symbol is CollateralSymbol {
   return (
     symbol === "ETH"
     || symbol === "RETH"
-    || symbol === "WSTETH"
+    || symbol === "WCENT"
   );
 }
 
@@ -100,17 +100,17 @@ export const RETH: CollateralToken = {
   symbol: "RETH" as const,
 } as const;
 
-export const WSTETH: CollateralToken = {
+export const WCENT: CollateralToken = {
   collateralRatio: 1.2,
   icon: tokenSteth,
-  name: "wstETH",
-  symbol: "WSTETH" as const,
+  name: "WCENT",
+  symbol: "WCENT" as const,
 } as const;
 
 export const COLLATERALS: CollateralToken[] = [
   ETH,
   RETH,
-  WSTETH,
+  WCENT,
 ];
 
 export const TOKENS_BY_SYMBOL = {
@@ -120,5 +120,5 @@ export const TOKENS_BY_SYMBOL = {
   LUSD,
   RETH,
   SBOLD,
-  WSTETH,
+  WCENT,
 } as const;

@@ -43,13 +43,13 @@ export function Dropdown({
   size = "medium",
 }: {
   buttonDisplay?:
-    | "normal"
-    | "label-only"
-    | ReactElement
-    | ((item: DropdownItem, index: number) => {
-      icon?: ReactNode;
-      label: ReactNode;
-    });
+  | "normal"
+  | "label-only"
+  | ReactElement
+  | ((item: DropdownItem, index: number) => {
+    icon?: ReactNode;
+    label: ReactNode;
+  });
   customButton?: (ctx: {
     item: DropdownItem | null;
     index: number;
@@ -74,7 +74,7 @@ export function Dropdown({
     ? `bottom-${menuPlacement}` as const
     : menuPlacement;
 
-  const { refs: floatingRefs, floatingStyles } = useFloating<HTMLButtonElement>({
+  const { refs: floatingRefs, x, y, strategy } = useFloating<HTMLButtonElement>({
     placement,
     whileElementsMounted: (refEl, floatingEl, update) => {
       const updateFromProps = refEl instanceof HTMLElement
@@ -93,7 +93,6 @@ export function Dropdown({
       offset(8),
       shift(),
     ],
-    transform: false,
   });
 
   if (typeof placeholder === "string") {
@@ -200,8 +199,8 @@ export function Dropdown({
     index: selected,
     menuVisible: showMenu,
   }) ?? (
-    isValidElement(buttonDisplay) ? buttonDisplay : null
-  );
+      isValidElement(buttonDisplay) ? buttonDisplay : null
+    );
 
   return (
     <>
@@ -318,7 +317,9 @@ export function Dropdown({
                 zIndex: 1,
               })}
               style={{
-                ...floatingStyles,
+                position: strategy,
+                top: y ?? 0,
+                left: x ?? 0,
                 width: menuWidth,
               }}
             >
