@@ -62,7 +62,7 @@ export const MIN_DEBT = dn.from(2000, 18);
 export const MAX_COLLATERAL_DEPOSITS: Record<CollateralSymbol, dn.Dnum> = {
   ETH: dn.from(100_000_000n, 18),
   WCENT: dn.from(100_000_000n, 18),
-  RETH: dn.from(100_000_000n, 18),
+  WETH: dn.from(100_000_000n, 18),
 };
 
 // LTV factor suggestions, as ratios of the multiply factor range
@@ -118,8 +118,8 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
       STABILITY_POOL: "0xcf46dab575c364a8b91bda147720ff4361f4627f",
       TROVE_MANAGER: "0xb47ef60132deabc89580fd40e49c062d93070046",
     }, {
-      symbol: "RETH",
-      name: "rETH",
+      symbol: "WETH",
+      name: "wETH",
       COLL_TOKEN: "0xae78736cd615f374d3085123a210448e74fc6393",
       LEVERAGE_ZAPPER: "0x7d5f19a1e48479a95c4eb40fd1a534585026e7e5",
       STABILITY_POOL: "0xc4463b26be1a6064000558a84ef9b6a58abe4f7a",
@@ -148,8 +148,8 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
       STABILITY_POOL: "0x68320bd4bbc16fe14f91501380edaa9ffe5890e1",
       TROVE_MANAGER: "0xa7b57913b5643025a15c80ca3a56eb6fb59d095d",
     }, {
-      symbol: "RETH",
-      name: "rETH",
+      symbol: "WETH",
+      name: "wETH",
       COLL_TOKEN: "0xbdb72f78302e6174e48aa5872f0dd986ed6d98d9",
       LEVERAGE_ZAPPER: "0x251dfe2078a910c644289f2344fac96bffea7c02",
       STABILITY_POOL: "0x8492ad1df9f89e4b6c54c81149058172592e1c94",
@@ -175,7 +175,7 @@ export const DEFAULT_STRATEGIES: Array<[
       name: "Conservative Strategy",
       address: "0x8869a6FB59a8Df330F90D9Fbf46eBfaFf6D4BC14",
     }]],
-    // RETH
+    // WETH
     [2, [{
       name: "Conservative Strategy",
       address: "0x7700B2D305f47aE82e9598BAb6D7CCb57299A82b",
