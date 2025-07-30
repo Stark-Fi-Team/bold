@@ -73,7 +73,7 @@ export function InputFieldFixture({
         menuPlacement="end"
         items={[
           itemRow("ETH", "ETH", "10.00"),
-          itemRow("RETH", "rETH", "30.00"),
+          itemRow("WETH", "wETH", "30.00"),
           itemRow("WCENT", "wCENT", "40.00"),
         ]}
       />

@@ -86,7 +86,7 @@ export function DropdownFixture({
           }]
           : [
             tokenItemRow("ETH", "ETH", "10.00"),
-            tokenItemRow("RETH", "rETH", "30.00"),
+            tokenItemRow("WETH", "wETH", "30.00"),
             tokenItemRow("WCENT", "wCENT", "40.00"),
           ]}
         menuWidth={300}
