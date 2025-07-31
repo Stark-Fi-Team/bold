@@ -134,9 +134,9 @@ export const openLeveragePosition: FlowDeclaration<OpenLeveragePositionRequest> 
           value={[
             <div
               key="start"
-              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} ETH`}
-            >
-              {fmtnum(ETH_GAS_COMPENSATION, 4)} ETH
+              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} TCENT`}
+            >   
+              {fmtnum(ETH_GAS_COMPENSATION, 4)} TCENT
             </div>,
             "Only used in case of liquidation",
           ]}
@@ -218,8 +218,8 @@ export const openLeveragePosition: FlowDeclaration<OpenLeveragePositionRequest> 
           receiver: ADDRESS_ZERO,
         };
 
-        // ETH collateral case
-        if (branch.symbol === "ETH") {
+        // TCENT collateral case  
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...LeverageWETHZapper,
             functionName: "openLeveragedTroveWithRawETH",
@@ -277,8 +277,8 @@ export const openLeveragePosition: FlowDeclaration<OpenLeveragePositionRequest> 
       throw new Error("Invalid branch: " + loan.branchId);
     }
 
-    // ETH doesn't need approval
-    if (collToken.symbol === "ETH") {
+    // TCENT doesn't need approval  
+    if (collToken.symbol === "TCENT") {
       return ["openLeveragedTrove"];
     }
 

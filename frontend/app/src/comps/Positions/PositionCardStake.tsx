@@ -137,11 +137,11 @@ export function PositionCardStake({
                     gap: 4,
                     color: "positionContent",
                   })}
-                >
+                > 
                   <Amount value={rewards.eth} format="4diff" />
-                  <TokenIcon size="mini" symbol="ETH" />
+                  <TokenIcon size="mini" symbol="TCENT" />
                 </div>
-              </div>
+              </div>      
             }
           />
         </CardRows>

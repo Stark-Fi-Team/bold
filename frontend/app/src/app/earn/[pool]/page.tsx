@@ -1,8 +1,8 @@
 export function generateStaticParams() {
   return [
-    { pool: "eth" },
-    { pool: "reth" },
-    { pool: "wsteth" },
+    { pool: "tcent" },
+    { pool: "weth" },
+    { pool: "wcent" },
     { pool: "sbold" },
   ];
 }

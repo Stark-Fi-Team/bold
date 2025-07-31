@@ -141,7 +141,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
 
         const branch = getBranch(ctx.request.loan.branchId);
 
-        const Controller = branch.symbol === "ETH"
+        const Controller = branch.symbol === "TCENT"
           ? branch.contracts.LeverageWETHZapper
           : branch.contracts.LeverageLSTZapper;
 
@@ -207,9 +207,9 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
 
         const branch = getBranch(loan.branchId);
 
-        if (branch.symbol === "ETH") {
-          throw new Error("ETH collateral not supported for adjustTrove");
-        }
+        if (branch.symbol === "TCENT") {
+          throw new Error("TCENT collateral not supported for adjustTrove");
+        } 
 
         return ctx.writeContract({
           ...branch.contracts.LeverageLSTZapper,
@@ -240,7 +240,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
 
         const branch = getBranch(loan.branchId);
 
-        if (branch.symbol === "ETH") {
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "repayBold",
@@ -270,7 +270,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
 
         const branch = getBranch(loan.branchId);
 
-        if (branch.symbol === "ETH") {
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "addCollWithRawETH",
@@ -300,7 +300,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
         const debtChange = getDebtChange(loan, ctx.request.prevLoan);
         const branch = getBranch(loan.branchId);
 
-        if (branch.symbol === "ETH") {
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "withdrawBold",
@@ -329,7 +329,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
         const collChange = getCollChange(loan, ctx.request.prevLoan);
         const branch = getBranch(loan.branchId);
 
-        if (branch.symbol === "ETH") {
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "withdrawCollToRawETH",
@@ -356,7 +356,7 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
 
     const branch = getBranch(ctx.request.loan.branchId);
 
-    const Controller = branch.symbol === "ETH"
+    const Controller = branch.symbol === "TCENT"
       ? branch.contracts.LeverageWETHZapper
       : branch.contracts.LeverageLSTZapper;
 
@@ -372,8 +372,8 @@ export const updateBorrowPosition: FlowDeclaration<UpdateBorrowPositionRequest> 
       ],
     );
 
-    // Collateral token needs to be approved if collChange > 0 and collToken != "ETH" (no LeverageWETHZapper)
-    const isCollApproved = branch.symbol === "ETH" || !dn.gt(collChange, 0) || !dn.gt(collChange, [
+    // Collateral token needs to be approved if collChange > 0 and collToken != "TCENT" (no LeverageWETHZapper)
+      const isCollApproved = branch.symbol === "TCENT" || !dn.gt(collChange, 0) || !dn.gt(collChange, [
       (await ctx.readContract({
         ...branch.contracts.CollToken,
         functionName: "allowance",
@@ -418,7 +418,7 @@ function getFinalSteps(
 
   // both coll and debt change => adjust trove
   if (!dn.eq(collChange, 0) && !dn.eq(debtChange, 0)) {
-    if (collSymbol === "ETH") {
+    if (collSymbol === "TCENT") {
       return dn.gt(collChange, 0)
         ? ["depositColl", dn.gt(debtChange, 0) ? "withdrawBold" : "depositBold"]
         : [dn.gt(debtChange, 0) ? "withdrawBold" : "depositBold", "withdrawColl"];

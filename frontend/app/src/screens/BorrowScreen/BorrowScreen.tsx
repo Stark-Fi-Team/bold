@@ -142,10 +142,10 @@ export function BorrowScreen() {
   const maxAmount = collBalance.data && dnumMin(
     maxCollDeposit,
     dnumMax(
-      // Only keep a reserve for ETH, not LSTs
-      dn.sub(collBalance.data, collSymbol === "ETH" ? ETH_MAX_RESERVE : 0),
+      // Only keep a reserve for TCENT, not LSTs
+      dn.sub(collBalance.data, collSymbol === "TCENT" ? ETH_MAX_RESERVE : 0),
       dnum18(0),
-    ),
+    ),  
   );
 
   const isBelowMinDebt = debt.parsed && !debt.isEmpty && dn.lt(debt.parsed, MIN_DEBT);
@@ -187,7 +187,7 @@ export function BorrowScreen() {
                     />
                   ))}
                 </TokenIcon.Group>
-                {NBSP}ETH
+                {NBSP}TCENT
               </div>,
               <div
                 className={css({

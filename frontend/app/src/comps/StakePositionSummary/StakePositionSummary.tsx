@@ -281,7 +281,7 @@ export function StakePositionSummary({
                   format="2diff"
                   value={stakePosition?.rewards.eth ?? 0}
                 />
-                <TokenIcon symbol="ETH" size="mini" />
+                <TokenIcon symbol="TCENT" size="mini" />
               </HFlex>
             </HFlex>
           </div>

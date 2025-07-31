@@ -29,10 +29,10 @@ export function useBalances(
 ) {
   const tokenConfigs = tokens.map((token) => {
     const tokenAddress = match(token)
-      .when(
-        (symbol) => Boolean(symbol && isCollateralSymbol(symbol) && symbol !== "ETH"),
+      .when(  
+        (symbol) => Boolean(symbol && isCollateralSymbol(symbol) && symbol !== "TCENT"),
         (symbol) => {
-          if (!symbol || !isCollateralSymbol(symbol) || symbol === "ETH") {
+          if (!symbol || !isCollateralSymbol(symbol) || symbol === "TCENT") {
             return null;
           }
           return getBranch(symbol).contracts.CollToken.address;
@@ -45,13 +45,13 @@ export function useBalances(
 
     return {
       token,
-      tokenAddress,
-      isEth: token === "ETH",
+      tokenAddress,   
+      isTcent: token === "TCENT",
     };
   });
 
-  const ethTokens = tokenConfigs.filter((config) => config.isEth);
-  const erc20Tokens = tokenConfigs.filter((config) => !config.isEth && config.tokenAddress);
+  const tcentTokens = tokenConfigs.filter((config) => config.isTcent);
+  const erc20Tokens = tokenConfigs.filter((config) => !config.isTcent && config.tokenAddress);
 
   const erc20Balances = useReadContracts({
     contracts: erc20Tokens.map((config) => ({
@@ -65,19 +65,19 @@ export function useBalances(
     },
   });
 
-  const ethBalance = useWagmiBalance({
+  const tcentBalance = useWagmiBalance({
     address,
-    query: {
-      enabled: Boolean(address && ethTokens.length > 0),
+    query: {  
+      enabled: Boolean(address && tcentTokens.length > 0),
     },
   });
 
   // combine results
   return tokens.reduce((result, token) => {
-    if (token === "ETH") {
-      result[token] = {
-        data: ethBalance.data ? dnum18(ethBalance.data.value) : undefined,
-        isLoading: ethBalance.isLoading,
+    if (token === "TCENT") {
+      result[token] = { 
+        data: tcentBalance.data ? dnum18(tcentBalance.data.value) : undefined,
+        isLoading: tcentBalance.isLoading,
       };
     } else {
       const erc20Index = erc20Tokens.findIndex((config) => config.token === token);

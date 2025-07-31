@@ -220,8 +220,8 @@ export const updateLeveragePosition: FlowDeclaration<UpdateLeveragePositionReque
 
         const branch = getBranch(ctx.request.loan.branchId);
 
-        // add ETH
-        if (branch.symbol === "ETH") {
+        // add TCENT
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "addCollWithRawETH",
@@ -259,8 +259,8 @@ export const updateLeveragePosition: FlowDeclaration<UpdateLeveragePositionReque
           ctx.request.depositChange[0] * -1n,
         ] as const;
 
-        // withdraw ETH
-        if (branch.symbol === "ETH") {
+        // withdraw TCENT   
+        if (branch.symbol === "TCENT") {    
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "withdrawCollToRawETH",
@@ -309,8 +309,8 @@ export const updateLeveragePosition: FlowDeclaration<UpdateLeveragePositionReque
           maxUpfrontFee: MAX_UPFRONT_FEE,
         }] as const;
 
-        // leverage up ETH trove
-        if (branch.symbol === "ETH") {
+        // leverage up TCENT trove
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "leverUpTrove",
@@ -358,7 +358,7 @@ export const updateLeveragePosition: FlowDeclaration<UpdateLeveragePositionReque
           minBoldAmount: params.minBoldAmount,
         }] as const;
 
-        if (branch.symbol === "ETH") {
+        if (branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "leverDownTrove",
@@ -385,8 +385,8 @@ export const updateLeveragePosition: FlowDeclaration<UpdateLeveragePositionReque
     const steps: string[] = [];
     const branch = getBranch(loan.branchId);
 
-    // only check approval for non-ETH collaterals
-    if (branch.symbol !== "ETH" && depositChange && dn.gt(depositChange, 0)) {
+    // only check approval for non-TCENT collaterals
+    if (branch.symbol !== "TCENT" && depositChange && dn.gt(depositChange, 0)) {
       const { LeverageLSTZapper, CollToken } = branch.contracts;
       const allowance = dnum18(
         await ctx.readContract({
