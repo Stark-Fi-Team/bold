@@ -84,7 +84,7 @@ export function BorrowScreen() {
   const [interestRateDelegate, setInterestRateDelegate] = useState<Address | null>(null);
 
   const collPrice = usePrice(collateral.symbol);
-
+  console.log("collPrice", collPrice.data);
   const balances = useBalances(account.address, KNOWN_COLLATERAL_SYMBOLS);
   const collateralRatios = useBranchCollateralRatios(branch.id);
   console.log(account.address);

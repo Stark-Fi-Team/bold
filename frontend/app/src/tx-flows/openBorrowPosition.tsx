@@ -297,15 +297,31 @@ export const openBorrowPosition: FlowDeclaration<OpenBorrowPositionRequest> = {
       async verify(ctx, hash) {
         const receipt = await verifyTransaction(ctx.wagmiConfig, hash, ctx.isSafe);
 
+        // Debug: Log the transaction receipt
+        console.log("Transaction receipt:", receipt);
+        console.log("Transaction logs:", receipt.logs);
+
         // extract trove ID from logs
         const branch = getBranch(ctx.request.branchId);
+        console.log("Branch contracts:", branch.contracts);
+        console.log("TroveManager ABI:", branch.contracts.TroveManager.abi);
+        
         const [troveOperation] = parseEventLogs({
           abi: branch.contracts.TroveManager.abi,
           logs: receipt.logs,
           eventName: "TroveOperation",
         });
-
+        
+        console.log("Parsed trove operation:", troveOperation);
+        
         if (!troveOperation?.args?._troveId) {
+          console.error("Trove operation args:", troveOperation?.args);
+          console.error("All parsed events:", parseEventLogs({
+            abi: branch.contracts.TroveManager.abi,
+            logs: receipt.logs,
+          }));
+          console.error("Transaction status:", receipt.status);
+          console.error("Transaction block number:", receipt.blockNumber);
           throw new Error("Failed to extract trove ID from transaction");
         }
 
