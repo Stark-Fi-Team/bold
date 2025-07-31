@@ -34,7 +34,7 @@ export function PanelClaimRewards({
   const ethPrice = usePrice("ETH");
   const boldPriceUsd = usePrice("BOLD");
   const collPriceUsd = usePrice(collateral.symbol);
-
+  
   const isActive = isEarnPositionActive(position ?? null);
 
   const totalRewards = collPriceUsd.data && boldPriceUsd.data && dn.add(
