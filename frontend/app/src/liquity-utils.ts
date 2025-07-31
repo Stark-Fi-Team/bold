@@ -96,6 +96,7 @@ export function getCollToken(branchId: BranchId | null): CollateralToken | null 
   }
   const branch = getBranch(branchId);
   const token = COLLATERALS.find((c) => c.symbol === branch.symbol);
+  console.log("token111", token);
   if (!token) {
     throw new Error(`Unknown collateral symbol: ${branch.symbol}`);
   }

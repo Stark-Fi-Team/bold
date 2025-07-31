@@ -201,7 +201,7 @@ function Balance({
           size="mini"
           label="tap"
           onClick={() => {
-            if ((tokenSymbol === "WSTETH" || tokenSymbol === "RETH") && CollToken) {
+            if ((tokenSymbol === "WCENT" || tokenSymbol === "WETH") && CollToken) {
               writeContract({
                 abi: ERC20Faucet,
                 address: CollToken.address,

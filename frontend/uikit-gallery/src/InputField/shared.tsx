@@ -73,8 +73,8 @@ export function InputFieldFixture({
         menuPlacement="end"
         items={[
           itemRow("ETH", "ETH", "10.00"),
-          itemRow("RETH", "rETH", "30.00"),
-          itemRow("WSTETH", "wstETH", "40.00"),
+          itemRow("WETH", "wETH", "30.00"),
+          itemRow("WCENT", "wCENT", "40.00"),
         ]}
       />
     ))
@@ -287,13 +287,32 @@ function IconEth() {
   );
 }
 
+function PlaceholderIcon() {
+  return (
+    <div
+      style={{
+        display: "grid",
+        placeItems: "center",
+        width: 24,
+        height: 24,
+        background: "#1C1D4F",
+        borderRadius: "50%",
+        fontSize: 14,
+        fontWeight: 600,
+      }}
+    >
+      T
+    </div>
+  );
+}
+
 function itemRow(
   symbol: ComponentProps<typeof TokenIcon>["symbol"],
   name: string,
   balance: string,
 ) {
   return {
-    icon: <TokenIcon symbol={symbol} />,
+    icon: symbol ? <TokenIcon symbol={symbol} /> : <PlaceholderIcon />,
     label: name,
     value: balance,
   };

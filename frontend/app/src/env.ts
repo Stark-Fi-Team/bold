@@ -30,8 +30,8 @@ function isIcStrategyList(value: unknown): value is IcStrategy[] {
 
 export const CollateralSymbolSchema = v.union([
   v.literal("ETH"),
-  v.literal("RETH"),
-  v.literal("WSTETH"),
+  v.literal("WETH"),
+  v.literal("WCENT"),
 ]);
 
 function isCollateralSymbol(value: unknown) {
@@ -182,6 +182,7 @@ export const EnvSchema = v.pipe(
     CONTRACT_LUSD_TOKEN: vAddress(),
     CONTRACT_MULTI_TROVE_GETTER: vAddress(),
     CONTRACT_WETH: vAddress(),
+    CONTRACT_WCENT_TOKEN: vAddress(),
 
     ...vBranchEnvVars(0).entries,
     ...vBranchEnvVars(1).entries,
@@ -336,6 +337,7 @@ const parsedEnv = v.safeParse(EnvSchema, {
   CONTRACT_LUSD_TOKEN: process.env.NEXT_PUBLIC_CONTRACT_LUSD_TOKEN,
   CONTRACT_MULTI_TROVE_GETTER: process.env.NEXT_PUBLIC_CONTRACT_MULTI_TROVE_GETTER,
   CONTRACT_WETH: process.env.NEXT_PUBLIC_CONTRACT_WETH,
+  CONTRACT_WCENT_TOKEN: process.env.NEXT_PUBLIC_CONTRACT_WCENT_TOKEN,
 
   COLL_0_TOKEN_ID: process.env.NEXT_PUBLIC_COLL_0_TOKEN_ID,
   COLL_1_TOKEN_ID: process.env.NEXT_PUBLIC_COLL_1_TOKEN_ID,
@@ -383,10 +385,11 @@ const parsedEnv = v.safeParse(EnvSchema, {
 });
 
 if (!parsedEnv.success) {
-  console.error(
-    "Invalid environment variable(s):",
-    v.flatten<typeof EnvSchema>(parsedEnv.issues).nested,
-  );
+  console.log("ENV VALIDATION ISSUES:", parsedEnv.issues); // <-- Add this line
+  // console.error(
+  //   "WALLET_CONNECT_PROJECT_ID:", process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID,
+  //   v.flatten<typeof EnvSchema>(parsedEnv.issues).nested,
+  // );
   throw new Error(
     `Invalid environment variable(s): ${
       JSON.stringify(
@@ -425,6 +428,7 @@ export const {
   CONTRACT_LUSD_TOKEN,
   CONTRACT_MULTI_TROVE_GETTER,
   CONTRACT_WETH,
+  CONTRACT_WCENT_TOKEN,
   DEPLOYMENT_FLAVOR,
   KNOWN_INITIATIVES_URL,
   LEGACY_CHECK,

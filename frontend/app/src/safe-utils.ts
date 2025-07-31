@@ -9,7 +9,7 @@ async function safeApiCall(path: string) {
   if (!SAFE_API_URL) {
     throw new Error("SAFE_API_URL is not set");
   }
-  return fetch(`${SAFE_API_URL}/v1${path}`, {
+  return fetch(`${SAFE_API_URL}${path}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -46,7 +46,7 @@ export const SafeStatusSchema = v.object({
 export async function getSafeStatus(safeAddress: Address): Promise<
   v.InferOutput<typeof SafeStatusSchema> | null
 > {
-  const response = await safeApiCall(`/safes/${safeAddress}`);
+  const response = await safeApiCall(`/account/${safeAddress}/transfers/`);
 
   if (response.status === 404) {
     return null;
