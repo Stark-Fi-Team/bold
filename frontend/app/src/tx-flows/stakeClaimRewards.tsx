@@ -36,10 +36,10 @@ export const stakeClaimRewards: FlowDeclaration<StakeClaimRewardsRequest> = {
   Details({ request }) {
     const { rewards } = request.stakePosition;
     const lusdPrice = usePrice("LUSD");
-    const ethPrice = usePrice("ETH");
+    const ethPrice = usePrice("TCENT");
 
     const rewardsLusdInUsd = lusdPrice.data && dn.mul(rewards.lusd, lusdPrice.data);
-    const rewardsEthInUsd = ethPrice.data && dn.mul(rewards.eth, ethPrice.data);
+    const rewardsTcentInUsd = ethPrice.data && dn.mul(rewards.eth, ethPrice.data);
 
     return (
       <>
@@ -60,16 +60,16 @@ export const stakeClaimRewards: FlowDeclaration<StakeClaimRewardsRequest> = {
           ]}
         />
         <TransactionDetailsRow
-          label="Claiming ETH rewards"
+          label="Claiming TCENT rewards"
           value={[
             <Amount
-              key="start"
-              value={rewards.eth}
-              suffix=" ETH"
+              key="start" 
+              value={rewards.eth}         
+              suffix=" TCENT"
             />,
             <Amount
-              key="end"
-              value={rewardsEthInUsd}
+              key="end" 
+              value={rewardsTcentInUsd}
               prefix="$"
               fallback="−"
             />,

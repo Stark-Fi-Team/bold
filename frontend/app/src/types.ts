@@ -116,7 +116,7 @@ export type PositionStake = {
   deposit: Dnum;
   rewards: {
     lusd: Dnum;
-    eth: Dnum;
+    eth: Dnum;        
   };
 };
 

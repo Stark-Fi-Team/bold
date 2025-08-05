@@ -60,7 +60,7 @@ export const MAX_UPFRONT_FEE = 1000n * 10n ** 18n;
 export const MIN_DEBT = dn.from(2000, 18);
 
 export const MAX_COLLATERAL_DEPOSITS: Record<CollateralSymbol, dn.Dnum> = {
-  ETH: dn.from(100_000_000n, 18),
+  TCENT: dn.from(100_000_000n, 18),
   WCENT: dn.from(100_000_000n, 18),
   WETH: dn.from(100_000_000n, 18),
 };
@@ -90,22 +90,22 @@ export const REDEMPTION_RISK: Record<Exclude<RiskLevel, "high">, number> = {
   medium: 0.05, // 5% of total debt in front
   low: 0.60, // 60% of total debt in front
 };
-
+    
 // default LEGACY_CHECKS when not set by the env
 export const DEFAULT_LEGACY_CHECKS = new Map<
   ChainId,
   Exclude<v.InferOutput<ReturnType<typeof vEnvLegacyCheck>>, boolean>
 >([
   // mainnet
-  [11690, {
+  [28802, {
     BOLD_TOKEN: "0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98",
     COLLATERAL_REGISTRY: "0xd99de73b95236f69a559117ecd6f519af780f3f7",
     GOVERNANCE: "0x636deb767cd7d0f15ca4ab8ea9a9b26e98b426ac",
     INITIATIVES_SNAPSHOT_URL: "/initiatives-snapshot-1.json",
     TROVES_SNAPSHOT_URL: "/troves-snapshot-1.json",
     BRANCHES: [{
-      symbol: "ETH",
-      name: "ETH",
+      symbol: "TCENT",
+      name: "TCENT",
       COLL_TOKEN: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       LEVERAGE_ZAPPER: "0x978d7188ae01881d254ad7e94874653b0c268004",
       STABILITY_POOL: "0xf69eb8c0d95d4094c16686769460f678727393cf",
@@ -134,8 +134,8 @@ export const DEFAULT_LEGACY_CHECKS = new Map<
     INITIATIVES_SNAPSHOT_URL: "/initiatives-snapshot-11155111.json",
     TROVES_SNAPSHOT_URL: "/troves-snapshot-11155111.json",
     BRANCHES: [{
-      symbol: "ETH",
-      name: "ETH",
+      symbol: "TCENT",
+      name: "TCENT",          
       COLL_TOKEN: "0x8116d0a0e8d4f0197b428c520953f302adca0b50",
       LEVERAGE_ZAPPER: "0x482bf4d6a2e61d259a7f97ef6aac8b3ce5dd9f99",
       STABILITY_POOL: "0x89fb98c98792c8b9e9d468148c6593fa0fc47b40",
@@ -165,7 +165,7 @@ export const DEFAULT_STRATEGIES: Array<[
 ]> = [
   // mainnet
   [1, [
-    // ETH
+    // TCENT
     [0, [{
       name: "Conservative Strategy",
       address: "0xE507E4d0763851A6287238aadD243948D18AB60a",
@@ -181,7 +181,38 @@ export const DEFAULT_STRATEGIES: Array<[
       address: "0x7700B2D305f47aE82e9598BAb6D7CCb57299A82b",
     }]],
   ]],
-];
+];  
 
 export const DEFAULT_COMMIT_URL = "https://github.com/liquity/bold/tree/{commit}";
 export const DEFAULT_VERSION_URL = "https://github.com/liquity/bold/releases/tag/%40liquity2%2Fapp-v{version}";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

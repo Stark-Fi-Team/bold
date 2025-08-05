@@ -62,7 +62,7 @@ export const legacyRedeemCollateral: FlowDeclaration<LegacyRedeemCollateralReque
         />
         {LEGACY_CHECK?.BRANCHES.map(({ symbol }) => {
           const collChange = collChanges?.find((change) => symbol === change.symbol)?.change;
-          const symbol_ = symbol === "ETH" ? "WETH" : symbol;
+          const symbol_ = symbol === "TCENT" ? "WETH" : symbol;
           return (
             <TransactionDetailsRow
               key={symbol}

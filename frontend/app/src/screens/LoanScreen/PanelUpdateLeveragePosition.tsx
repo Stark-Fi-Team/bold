@@ -121,7 +121,7 @@ export function PanelUpdateLeveragePosition({
   const collMax = depositMode === "remove" ? null : (
     collBalance.data && dn.sub(
       collBalance.data,
-      collToken?.symbol === "ETH" ? ETH_MAX_RESERVE : 0, // Only keep a reserve for ETH, not LSTs
+      collToken?.symbol === "TCENT" ? ETH_MAX_RESERVE : 0, // Only keep a reserve for TCENT, not LSTs
     )
   );
 

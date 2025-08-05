@@ -36,8 +36,8 @@ export function InputFieldFixture({
       .with("deposit", () => "You deposit")
       .with("borrow", () => "You borrow")
       .with("strategy", () => undefined)
-      .with("slider", () => "ETH Liquidation price")
-      .exhaustive(),
+      .with("slider", () => "TCENT Liquidation price")
+      .exhaustive(),    
   );
 
   const [value, setValue] = useFixtureInput("value", "");
@@ -72,9 +72,9 @@ export function InputFieldFixture({
         onSelect={setToken}
         menuPlacement="end"
         items={[
-          itemRow("ETH", "ETH", "10.00"),
-          itemRow("WETH", "wETH", "30.00"),
-          itemRow("WCENT", "wCENT", "40.00"),
+          itemRow("TCENT", "TCENT", "10.00"),
+          itemRow("WETH", "WETH", "30.00"),
+          itemRow("WCENT", "WCENT", "40.00"),
         ]}
       />
     ))
@@ -108,8 +108,8 @@ export function InputFieldFixture({
 
   const secondaryEnd = match(fixture)
     .with("deposit", () => (
-      <TextButton
-        label="Max 10.00 ETH"
+      <TextButton 
+        label="Max 10.00 TCENT"
         onClick={() => setValue("10")}
       />
     ))
@@ -161,7 +161,7 @@ export function InputFieldFixture({
 
   const value_ = match(fixture)
     .with("deposit", () => (
-      (focused || !parsedValue) ? value : `${dn.format(parsedValue)} ETH`
+      (focused || !parsedValue) ? value : `${dn.format(parsedValue)} TCENT`
     ))
     .with("borrow", () => (
       (focused || !parsedValue) ? value : `${dn.format(parsedValue)} BOLD`
@@ -206,15 +206,15 @@ export function InputFieldFixture({
   );
 }
 
-function Token({ name }: { name: "ETH" | "BOLD" }) {
+function Token({ name }: { name: "TCENT" | "BOLD" }) {
   return (
     <Action
       icon={match(name)
-        .with("ETH", () => <IconEth />)
+        .with("TCENT", () => <IconEth />)
         .with("BOLD", () => <IconBold />)
         .exhaustive()}
       label={name}
-    />
+    />  
   );
 }
 

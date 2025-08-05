@@ -89,7 +89,7 @@ export function PanelStaking() {
   return (
     <>
       <Field
-        field={
+        field={ 
           <InputField
             id="input-staking-change"
             drawer={insufficientBalance
@@ -253,8 +253,8 @@ export function PanelStaking() {
                   className={css({
                     color: "contentAlt",
                   })}
-                >
-                  ETH
+                > 
+                  TCENT
                 </span>
               </div>
             </div>
@@ -277,7 +277,7 @@ export function PanelStaking() {
               type: "stake",
               owner: account.address,
               deposit: updatedDeposit,
-              rewards: {
+              rewards: {  
                 eth: rewardsEth,
                 lusd: rewardsLusd,
               },

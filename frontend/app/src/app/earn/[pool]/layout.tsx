@@ -3,7 +3,7 @@ import { SboldPoolScreen } from "@/src/screens/EarnPoolScreen/SboldPoolScreen";
 
 export function generateStaticParams() {
   return [
-    { pool: "eth" },
+    { pool: "tcent" },
     { pool: "weth" },
     { pool: "wcent" },
     { pool: "sbold" },
@@ -12,11 +12,11 @@ export function generateStaticParams() {
 
 export default async function Layout({
   params,
-}: {
+}: {  
   params: Promise<{
-    pool: "eth" | "weth" | "wcent" | "sbold";
+    pool: "tcent" | "weth" | "wcent" | "sbold";
   }>;
-}) {
+}) {  
   const { pool } = await params;
   return pool === "sbold"
     ? <SboldPoolScreen />

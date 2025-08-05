@@ -9,7 +9,7 @@ export default {
   appName: "Liquity V2",
   appDescription: `
     Liquity V2 is a new borrowing protocol that lets users
-    deposit ETH or LSTs as collateral and mint the stablecoin BOLD.
+    deposit TCENT or LSTs as collateral and mint the stablecoin BOLD.
   `,
   appUrl: typeof window === "undefined"
     ? "https://www.liquity.org/"
@@ -65,10 +65,10 @@ export default {
       "Liquidation price",
       <>The collateral price at which a loan can be liquidated.</>,
     ],
-    ethPrice: [
-      "ETH Price",
-      <>
-        The current price of ETH, as reported by the oracle. The ETH price is used to calculate the Loan-To-Value (LTV)
+    tcentPrice: [
+      "TCENT Price",
+      <>  
+        The current price of TCENT, as reported by the oracle. The TCENT price is used to calculate the Loan-To-Value (LTV)
         ratio of a loan.
       </>,
     ],
@@ -206,7 +206,7 @@ export default {
       },
       multiply: {
         title: "Multiply",
-        description: "Increase your exposure to ETH and its staking yield with a single click",
+        description: "Increase your exposure to TCENT and its staking yield with a single click",
       },
       earn: {
         title: "Earn with BOLD",
@@ -219,9 +219,9 @@ export default {
     },
     earnTable: {
       title: "Earn rewards with BOLD",
-      subtitle: "Earn BOLD & (staked) ETH rewards by depositing your BOLD in a stability pool",
+      subtitle: "Earn BOLD & (staked) TCENT rewards by depositing your BOLD in a stability pool",
       forksInfo: {
-        text: (
+        text: (   
           <>
             <abbr title="Stability Pool">SP</abbr> depositors earn additional rewards from forks.
           </>
@@ -239,7 +239,7 @@ export default {
     },
     infoTooltips: {
       avgInterestRate: [
-        "The current average interest rate being paid by ETH-backed positions.",
+        "The current average interest rate being paid by TCENT-backed positions.",
       ],
       spApr: [
         "Annual Percentage Rate",
@@ -258,9 +258,9 @@ export default {
 
   // Borrow screen
   borrowScreen: {
-    headline: (eth: N, bold: N) => (
+    headline: (tcent: N, bold: N) => (
       <>
-        Borrow {bold} with {eth}
+        Borrow {bold} with {tcent}
       </>
     ),
     depositField: {
@@ -270,8 +270,8 @@ export default {
       label: "Loan",
     },
     liquidationPriceField: {
-      label: "ETH liquidation price",
-    },
+      label: "TCENT liquidation price",
+    },    
     interestRateField: {
       label: "Interest rate",
     },
@@ -294,9 +294,9 @@ export default {
       label: "You deposit",
     },
     liquidationPriceField: {
-      label: "ETH liquidation price",
+      label: "TCENT liquidation price",
     },
-    interestRateField: {
+    interestRateField: {    
       label: "Interest rate",
     },
     action: "Next: Summary",
@@ -413,8 +413,8 @@ export default {
       currentApr: [
         "Average annualized return for BOLD deposits over the past 7 days.",
       ],
-      rewardsEth: [
-        "ETH rewards",
+      rewardsTcent: [
+        "TCENT rewards",
         "Your proceeds from liquidations conducted by this stability pool.",
       ],
       rewardsBold: [

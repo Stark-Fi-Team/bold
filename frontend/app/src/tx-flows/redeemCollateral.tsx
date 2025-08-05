@@ -64,8 +64,8 @@ export const redeemCollateral: FlowDeclaration<RedeemCollateralRequest> = {
         />
         {branches.map(({ symbol }) => {
           const collChange = collChanges?.find((change) => symbol === change.symbol)?.change;
-          const symbol_ = symbol === "ETH" ? "WETH" : symbol;
-          return (
+          const symbol_ = symbol === "TCENT" ? "WETH" : symbol;
+          return (  
             <TransactionDetailsRow
               key={symbol}
               label={`Receiving ${symbol_}`}

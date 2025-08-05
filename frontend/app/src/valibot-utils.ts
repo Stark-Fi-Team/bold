@@ -261,10 +261,10 @@ export function vVoteAllocations() {
 
 export function vCollateralSymbol() {
   return v.union([
-    v.literal("ETH"),
+    v.literal("TCENT"),
     v.literal("WETH"),
     v.literal("WCENT"),
-  ]);
+  ]); 
 }
 
 export function vTokenSymbol() {

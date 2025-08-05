@@ -79,9 +79,9 @@ export const legacyCloseLoanPosition: FlowDeclaration<LegacyCloseLoanPositionReq
           value={[
             <div
               key="start"
-              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} ETH`}
+              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} TCENT`}
             >
-              {fmtnum(ETH_GAS_COMPENSATION, 4)} ETH
+              {fmtnum(ETH_GAS_COMPENSATION, 4)} TCENT
             </div>,
           ]}
         />
@@ -131,9 +131,9 @@ export const legacyCloseLoanPosition: FlowDeclaration<LegacyCloseLoanPositionReq
         const branch = getLegacyBranch(trove.branchId);
         const { LEVERAGE_ZAPPER } = branch;
 
-        // repay with BOLD => get ETH
-        if (branch.symbol === "ETH") {
-          return ctx.writeContract({
+        // repay with BOLD => get TCENT
+        if (branch.symbol === "TCENT") {  
+          return ctx.writeContract({  
             abi: LeverageWETHZapper,
             address: LEVERAGE_ZAPPER,
             functionName: "closeTroveToRawETH",

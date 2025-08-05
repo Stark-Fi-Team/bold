@@ -89,10 +89,10 @@ export const closeLoanPosition: FlowDeclaration<CloseLoanPositionRequest> = {
           label="You reclaim the gas compensation deposit"
           value={[
             <div
-              key="start"
-              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} ETH`}
+              key="start" 
+              title={`${fmtnum(ETH_GAS_COMPENSATION, "full")} TCENT`}
             >
-              {fmtnum(ETH_GAS_COMPENSATION, 4)} ETH
+              {fmtnum(ETH_GAS_COMPENSATION, 4)} TCENT
             </div>,
           ]}
         />
@@ -118,7 +118,7 @@ export const closeLoanPosition: FlowDeclaration<CloseLoanPositionRequest> = {
           args: [BigInt(loan.troveId)],
         });
 
-        const Zapper = branch.symbol === "ETH"
+        const Zapper = branch.symbol === "TCENT"
           ? branch.contracts.LeverageWETHZapper
           : branch.contracts.LeverageLSTZapper;
 
@@ -147,8 +147,8 @@ export const closeLoanPosition: FlowDeclaration<CloseLoanPositionRequest> = {
         const { loan } = ctx.request;
         const branch = getBranch(loan.branchId);
 
-        // repay with BOLD => get ETH
-        if (!ctx.request.repayWithCollateral && branch.symbol === "ETH") {
+        // repay with BOLD => get TCENT
+        if (!ctx.request.repayWithCollateral && branch.symbol === "TCENT") {
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "closeTroveToRawETH",
@@ -177,8 +177,8 @@ export const closeLoanPosition: FlowDeclaration<CloseLoanPositionRequest> = {
           throw new Error("The flash loan amount could not be calculated.");
         }
 
-        // repay with collateral => get ETH
-        if (branch.symbol === "ETH") {
+        // repay with collateral => get TCENT
+        if (branch.symbol === "TCENT") {  
           return ctx.writeContract({
             ...branch.contracts.LeverageWETHZapper,
             functionName: "closeTroveFromCollateral",
@@ -216,7 +216,7 @@ export const closeLoanPosition: FlowDeclaration<CloseLoanPositionRequest> = {
     const { loan } = ctx.request;
     const branch = getBranch(loan.branchId);
 
-    const Zapper = branch.symbol === "ETH"
+    const Zapper = branch.symbol === "TCENT"
       ? branch.contracts.LeverageWETHZapper
       : branch.contracts.LeverageLSTZapper;
 

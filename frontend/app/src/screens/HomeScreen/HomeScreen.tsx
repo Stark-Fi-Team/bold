@@ -104,8 +104,8 @@ function BorrowTable({
   }
 
   return (
-    <HomeTable
-      title="Borrow BOLD against ETH and staked ETH"
+    <HomeTable  
+      title="Borrow BOLD against TCENT and staked TCENT"
       subtitle="You can adjust your loans, including your interest rate, at any time"
       icon={<IconBorrow />}
       columns={columns}

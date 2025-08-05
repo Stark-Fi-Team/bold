@@ -85,7 +85,7 @@ export function DropdownFixture({
             `,
           }]
           : [
-            tokenItemRow("ETH", "ETH", "10.00"),
+            tokenItemRow("TCENT", "TCENT", "10.00"),
             tokenItemRow("WETH", "wETH", "30.00"),
             tokenItemRow("WCENT", "wCENT", "40.00"),
           ]}

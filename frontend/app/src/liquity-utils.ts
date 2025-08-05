@@ -374,7 +374,7 @@ export function useStakePosition(address: null | Address) {
             eth: dnum18(pendingEthGainResult.result + (userProxyBalance.data?.value ?? 0n)),
             lusd: dnum18(pendingLusdGainResult.result + lusdBalanceResult.result),
           },
-        };
+        };    
       },
     },
   });
@@ -689,7 +689,7 @@ const StatsSchema = v.pipe(
     branch: Object.fromEntries(
       Object.entries(value.branch).map(([symbol, branch]) => {
         symbol = symbol.toUpperCase();
-        if (symbol === "WETH") symbol = "ETH";
+        if (symbol === "WETH") symbol = "TCENT";
         return [symbol, {
           collActive: dnumOrNull(branch.coll_active, 18),
           collDefault: dnumOrNull(branch.coll_default, 18),

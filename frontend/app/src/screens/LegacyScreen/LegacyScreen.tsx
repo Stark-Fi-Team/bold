@@ -495,7 +495,7 @@ function RedeemSection() {
   return (
     <HomeTable
       title="Legacy Redemption"
-      subtitle="Redeem your Legacy BOLD for ETH and LSTs."
+      subtitle="Redeem your Legacy BOLD for TCENT and LSTs."
       icon={<IconEarn />}
       columns={[]}
       rows={[

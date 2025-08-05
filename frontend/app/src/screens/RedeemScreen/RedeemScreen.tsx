@@ -71,7 +71,7 @@ export function RedeemScreen() {
                 />
               ))}
             </TokenIcon.Group>{" "}
-            ETH
+            TCENT     
           </HFlex>
         ),
       }}

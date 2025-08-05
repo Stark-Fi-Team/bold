@@ -136,7 +136,7 @@ export function AccountScreen({
                   address={address}
                   tokenSymbol={symbol}
                   tapButton={tapEnabled
-                    && symbol !== "ETH" && account.address
+                    && symbol !== "TCENT" && account.address
                     && addressesEqual(address, account.address)}
                 />
               </GridItem>
@@ -201,7 +201,7 @@ function Balance({
           size="mini"
           label="tap"
           onClick={() => {
-            if ((tokenSymbol === "WCENT" || tokenSymbol === "WETH") && CollToken) {
+            if ((tokenSymbol === "WETH" || tokenSymbol === "WCENT") && CollToken) {
               writeContract({
                 abi: ERC20Faucet,
                 address: CollToken.address,

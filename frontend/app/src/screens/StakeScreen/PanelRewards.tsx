@@ -18,7 +18,7 @@ import { useEstimateGas, useGasPrice } from "wagmi";
 export function PanelRewards() {
   const account = useAccount();
 
-  const ethPrice = usePrice("ETH");
+  const ethPrice = usePrice("TCENT");
 
   const stakePosition = useStakePosition(account.address ?? null);
   const Governance = getProtocolContract("Governance");
@@ -66,7 +66,7 @@ export function PanelRewards() {
         <Rewards
           amount={rewardsEth}
           label="Redemption gain"
-          symbol="ETH"
+          symbol="TCENT"
         />
 
         <div

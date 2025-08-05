@@ -29,7 +29,7 @@ function isIcStrategyList(value: unknown): value is IcStrategy[] {
 }
 
 export const CollateralSymbolSchema = v.union([
-  v.literal("ETH"),
+  v.literal("TCENT"), 
   v.literal("WETH"),
   v.literal("WCENT"),
 ]);

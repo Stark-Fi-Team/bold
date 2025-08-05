@@ -40,8 +40,8 @@ export default function InputFieldFixture() {
       <InputField
         contextual={
           <InputTokenBadge
-            icon={<TokenIcon symbol="ETH" />}
-            label="ETH"
+            icon={<TokenIcon symbol="TCENT" />}
+            label="TCENT"
           />
         }
         label={{
@@ -93,8 +93,8 @@ export default function InputFieldFixture() {
           start: "$0.00",
           end: (
             <TextButton
-              label={`Max 4.67 ETH`}
-              onClick={() => {
+              label={`Max 4.67 TCENT`}  
+              onClick={() => {    
                 // deposit.setValue(dn.toString(ethMax));
               }}
             />
